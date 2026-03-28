@@ -18,6 +18,15 @@ const Hero = ({ lang }: HeroProps) => {
           {t.heroEyebrow[lang]}
         </motion.div>
 
+        {/* Precision gold line */}
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: 120 }}
+          transition={{ duration: 1.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="h-px mx-auto mb-8"
+          style={{ background: `hsl(var(--gold))` }}
+        />
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

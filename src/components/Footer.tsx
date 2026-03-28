@@ -74,9 +74,14 @@ const Footer = ({ lang }: FooterProps) => {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} VitaBridge. All rights reserved.
-          </p>
+          <div>
+            <p className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} VitaBridge. All rights reserved.
+            </p>
+            <p className="text-[10px] text-muted-foreground/60 mt-1">
+              {lang === 'id' ? 'Pencocokan cerdas · Ketersediaan real-time · Komunikasi terenkripsi' : lang === 'zh' ? '智能匹配 · 实时可用性 · 加密通信' : 'AI-assisted matching · Real-time availability · Encrypted communications'}
+            </p>
+          </div>
           <p className="text-xs text-muted-foreground max-w-xl text-center sm:text-right leading-relaxed">
             {t.footerDisclaimer[lang]}
           </p>
