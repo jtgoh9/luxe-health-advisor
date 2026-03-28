@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle } from 'lucide-react';
+import { Send, CheckCircle, ShieldCheck } from 'lucide-react';
 import { Lang, t } from '@/data/translations';
 
 interface EnquiryFormProps {
   lang: Lang;
 }
+
+const privacyNote = {
+  id: 'Informasi Anda bersifat rahasia. Kami merespons dalam 2 jam.',
+  en: 'Your information is confidential. We respond within 2 hours.',
+  zh: '您的信息严格保密。我们将在2小时内回复。',
+};
 
 const EnquiryForm = ({ lang }: EnquiryFormProps) => {
   const [submitted, setSubmitted] = useState(false);
@@ -19,7 +25,6 @@ const EnquiryForm = ({ lang }: EnquiryFormProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would send to a backend
     console.log('Enquiry submitted:', form);
     setSubmitted(true);
   };
@@ -57,89 +62,41 @@ const EnquiryForm = ({ lang }: EnquiryFormProps) => {
             onSubmit={handleSubmit}
             className="border border-border rounded-sm bg-card p-6 sm:p-8 space-y-5"
           >
-            {/* Name */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">
-                {t.enquiryName[lang]}
-              </label>
-              <input
-                type="text"
-                required
-                maxLength={100}
-                value={form.name}
-                onChange={e => setForm({ ...form, name: e.target.value })}
-                className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-              />
+              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryName[lang]}</label>
+              <input type="text" required maxLength={100} value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
             </div>
-
-            {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">
-                {t.enquiryEmail[lang]}
-              </label>
-              <input
-                type="email"
-                required
-                maxLength={255}
-                value={form.email}
-                onChange={e => setForm({ ...form, email: e.target.value })}
-                className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-              />
+              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryEmail[lang]}</label>
+              <input type="email" required maxLength={255} value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
             </div>
-
-            {/* Phone */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">
-                {t.enquiryPhone[lang]}
-              </label>
-              <input
-                type="tel"
-                required
-                maxLength={20}
-                value={form.phone}
-                onChange={e => setForm({ ...form, phone: e.target.value })}
-                className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-              />
+              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryPhone[lang]}</label>
+              <input type="tel" required maxLength={20} value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
             </div>
-
-            {/* Preferred Language */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">
-                {t.enquiryLang[lang]}
-              </label>
-              <select
-                value={form.preferredLang}
-                onChange={e => setForm({ ...form, preferredLang: e.target.value })}
-                className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-              >
+              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryLang[lang]}</label>
+              <select value={form.preferredLang} onChange={e => setForm({ ...form, preferredLang: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors">
                 <option value="id">{t.enquiryLangId[lang]}</option>
                 <option value="en">{t.enquiryLangEn[lang]}</option>
                 <option value="zh">{t.enquiryLangZh[lang]}</option>
               </select>
             </div>
-
-            {/* Message */}
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">
-                {t.enquiryMessage[lang]}
-              </label>
-              <textarea
-                required
-                maxLength={1000}
-                rows={4}
-                value={form.message}
-                onChange={e => setForm({ ...form, message: e.target.value })}
-                className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-none"
-              />
+              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryMessage[lang]}</label>
+              <textarea required maxLength={1000} rows={4} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-none" />
             </div>
 
-            <button
-              type="submit"
-              className="btn-gold w-full flex items-center justify-center gap-2 text-sm py-3.5"
-            >
+            <button type="submit" className="btn-gold w-full flex items-center justify-center gap-2 text-sm py-3.5">
               <Send className="w-4 h-4" />
               {t.enquirySubmit[lang]}
             </button>
+
+            {/* Privacy reassurance */}
+            <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-primary shrink-0" />
+              <span>{privacyNote[lang]}</span>
+            </div>
           </motion.form>
         )}
       </div>

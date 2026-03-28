@@ -6,6 +6,12 @@ interface EuropeanWellnessProps {
   lang: Lang;
 }
 
+const cardHeading = {
+  id: 'Mengapa European Wellness',
+  en: 'Why European Wellness',
+  zh: '为什么选择 European Wellness',
+};
+
 const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
   const stats = [
     { icon: Clock, value: t.ewStat1[lang] },
@@ -44,7 +50,6 @@ const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.15] mb-5">{t.ewTitle[lang]}</h2>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8">{t.ewSub[lang]}</p>
 
-            {/* Therapy Tags */}
             <div className="flex flex-wrap gap-3 mb-8">
               {therapies.map(({ icon: Icon, label }) => (
                 <span key={label} className="inline-flex items-center gap-1.5 text-xs font-medium text-gold-text border border-primary/20 bg-primary/5 px-3 py-2 rounded-sm">
@@ -72,8 +77,9 @@ const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
             className="border border-border rounded-sm bg-card overflow-hidden"
           >
             <div className="p-6 sm:p-8 space-y-0">
+              <h3 className="font-serif text-lg text-foreground mb-2">{cardHeading[lang]}</h3>
               {stats.map(({ icon: Icon, value }, i) => (
-                <div key={i} className={`flex items-start gap-4 py-5 ${i > 0 ? 'border-t border-border' : ''}`}>
+                <div key={i} className={`flex items-start gap-4 py-5 ${i > 0 ? 'border-t border-border' : 'border-t border-border'}`}>
                   <div className="w-10 h-10 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">
                     <Icon className="w-4 h-4 text-primary" />
                   </div>

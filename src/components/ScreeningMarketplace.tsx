@@ -83,12 +83,13 @@ const ScreeningMarketplace = ({ lang }: MarketplaceProps) => {
         </motion.div>
 
         {/* Provider Selector */}
-        <div className="flex overflow-x-auto gap-3 mb-10 pb-2 scrollbar-hide">
+        <div className="relative">
+          <div className="flex overflow-x-auto gap-3 mb-10 pb-2 scrollbar-hide snap-x snap-mandatory">
           {PROVIDERS.map((p, i) => (
             <button
               key={p.id}
               onClick={() => { setSelectedProvider(i); setGenderFilter('all'); setSortMode('default'); }}
-              className={`flex-shrink-0 px-5 py-4 sm:px-6 sm:py-5 rounded-sm border transition-all duration-200 text-left min-w-[200px] sm:min-w-[240px] ${
+              className={`flex-shrink-0 snap-start px-5 py-4 sm:px-6 sm:py-5 rounded-sm border transition-all duration-200 text-left min-w-[200px] sm:min-w-[240px] ${
                 selectedProvider === i
                   ? 'border-primary bg-background shadow-sm border-t-2 border-t-primary'
                   : 'border-border bg-secondary hover:border-primary/30'
@@ -110,6 +111,9 @@ const ScreeningMarketplace = ({ lang }: MarketplaceProps) => {
               <span className="text-[10px] text-muted-foreground mt-1 block">{p.packages.length} {lang === 'id' ? 'paket' : lang === 'zh' ? '个方案' : 'packages'}</span>
             </button>
           ))}
+          </div>
+          {/* Scroll fade hint */}
+          <div className="absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none sm:hidden" />
         </div>
 
         {/* Filters Row */}
@@ -343,7 +347,7 @@ const PackageCard = ({ pkg, provider, lang, index, isComparing, onToggleCompare,
       </div>
 
       {/* Categories */}
-      <div className="px-4 sm:px-6 flex-1">
+      <div className="px-4 sm:px-6 flex-1 min-h-[180px]">
         <div className="border-t border-border pt-4 mb-4">
           <p className="text-xs font-semibold uppercase tracking-widest text-gold-text mb-4">{t.whatsIncluded[lang]}</p>
           {pkg.categories.map((cat, ci) => (
