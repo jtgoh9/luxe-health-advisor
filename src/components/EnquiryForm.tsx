@@ -63,19 +63,19 @@ const EnquiryForm = ({ lang }: EnquiryFormProps) => {
             className="border border-border rounded-sm bg-card p-6 sm:p-8 space-y-5"
           >
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryName[lang]}</label>
+              <label className="block text-base font-medium text-foreground mb-1.5">{t.enquiryName[lang]}</label>
               <input type="text" required maxLength={100} value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryEmail[lang]}</label>
+              <label className="block text-base font-medium text-foreground mb-1.5">{t.enquiryEmail[lang]}</label>
               <input type="email" required maxLength={255} value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryPhone[lang]}</label>
+              <label className="block text-base font-medium text-foreground mb-1.5">{t.enquiryPhone[lang]}</label>
               <input type="tel" required maxLength={20} value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryLang[lang]}</label>
+              <label className="block text-base font-medium text-foreground mb-1.5">{t.enquiryLang[lang]}</label>
               <select value={form.preferredLang} onChange={e => setForm({ ...form, preferredLang: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors">
                 <option value="id">{t.enquiryLangId[lang]}</option>
                 <option value="en">{t.enquiryLangEn[lang]}</option>
@@ -83,7 +83,7 @@ const EnquiryForm = ({ lang }: EnquiryFormProps) => {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t.enquiryMessage[lang]}</label>
+              <label className="block text-base font-medium text-foreground mb-1.5">{t.enquiryMessage[lang]}</label>
               <textarea required maxLength={1000} rows={4} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-3 text-sm border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-none" />
             </div>
 

@@ -13,7 +13,7 @@ const Hero = ({ lang }: HeroProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="section-eyebrow justify-center mb-8"
+          className="section-eyebrow justify-center mb-5 sm:mb-8"
         >
           {t.heroEyebrow[lang]}
         </motion.div>

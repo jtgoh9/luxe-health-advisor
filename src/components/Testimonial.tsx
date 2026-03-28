@@ -72,6 +72,7 @@ const Testimonial = ({ lang }: TestimonialProps) => {
       onTouchEnd={() => setPaused(false)}
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <div className="w-px h-10 bg-primary mx-auto mb-4" />
         <span className="font-serif text-5xl sm:text-6xl text-primary leading-none">"</span>
         <div className="min-h-[180px] sm:min-h-[160px] flex items-center justify-center">
           <AnimatePresence mode="wait">

@@ -117,8 +117,8 @@ const ScreeningMarketplace = ({ lang }: MarketplaceProps) => {
         </div>
 
         {/* Filters Row */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
-          <div className="flex items-center gap-3 flex-wrap">
+        <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
             {/* Gender filter */}
             <div className="flex items-center gap-1 bg-secondary rounded-sm p-0.5">
               {(['all', 'Male', 'Female'] as const).map(g => (
@@ -340,7 +340,7 @@ const PackageCard = ({ pkg, provider, lang, index, isComparing, onToggleCompare,
         <p className="text-xs text-muted-foreground line-clamp-1">{topCategories}</p>
 
         <div className="mt-3 space-y-1.5">
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-base text-muted-foreground leading-relaxed">
             <span className="font-medium text-foreground">{t.bestFor[lang]}</span> {pkg.best_for}
           </p>
         </div>

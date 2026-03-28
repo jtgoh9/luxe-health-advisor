@@ -51,7 +51,7 @@ const YourExperience = ({ lang }: YourExperienceProps) => {
                 <span className="font-serif text-lg text-gold-text font-semibold">{step.num}</span>
               </div>
               <h3 className="font-serif text-xl sm:text-2xl text-foreground mb-3">{step.title}</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{step.desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -79,7 +79,7 @@ const YourExperience = ({ lang }: YourExperienceProps) => {
             >
               <item.icon className="w-6 h-6 text-primary mb-5" />
               <h3 className="font-serif text-xl text-foreground mb-2">{item.title}</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{item.desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>

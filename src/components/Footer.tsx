@@ -40,10 +40,10 @@ const Footer = ({ lang }: FooterProps) => {
               {footerLinks.quickLinks[lang]}
             </h4>
             <ul className="space-y-2.5">
-              <li><a href="#marketplace" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{footerLinks.packages[lang]}</a></li>
-              <li><a href="#journey" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{footerLinks.journey[lang]}</a></li>
-              <li><a href="#european-wellness" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{footerLinks.about[lang]}</a></li>
-              <li><a href="#enquiry" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{footerLinks.contact[lang]}</a></li>
+              <li><a href="#marketplace" className="text-base text-muted-foreground hover:text-foreground transition-colors">{footerLinks.packages[lang]}</a></li>
+              <li><a href="#journey" className="text-base text-muted-foreground hover:text-foreground transition-colors">{footerLinks.journey[lang]}</a></li>
+              <li><a href="#european-wellness" className="text-base text-muted-foreground hover:text-foreground transition-colors">{footerLinks.about[lang]}</a></li>
+              <li><a href="#enquiry" className="text-base text-muted-foreground hover:text-foreground transition-colors">{footerLinks.contact[lang]}</a></li>
             </ul>
           </div>
 
@@ -58,13 +58,13 @@ const Footer = ({ lang }: FooterProps) => {
                   href={waLink(lang)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-base text-muted-foreground hover:text-foreground transition-colors"
                 >
                   WhatsApp: +65 {WHATSAPP.slice(2, 6)} {WHATSAPP.slice(6)}
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@vitabridge.sg" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href="mailto:hello@vitabridge.sg" className="text-base text-muted-foreground hover:text-foreground transition-colors">
                   hello@vitabridge.sg
                 </a>
               </li>
