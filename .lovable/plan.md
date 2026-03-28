@@ -1,94 +1,98 @@
 
 
-# VitaBridge — Premium Health Screening Marketplace
+# VitaBridge UX Overhaul Plan
 
-## Design Direction
-White premium aesthetic with warm gold accents. Clean, airy, and luxurious — inspired by high-end hospitality brands like Aman Resorts but on white surfaces.
+Based on the audit above, here is the implementation plan to address the highest-impact issues.
 
-### Color System
-- **Backgrounds**: Pure white `#FFFFFF` + warm off-white `#FAFAF8` for alternating sections
-- **Cards**: White with subtle warm borders and soft shadows
-- **Gold accent**: `#BFA06A` (primary), `#D4B97E` (hover), soft gold tints for backgrounds
-- **Text**: Deep navy `#1A1A2E` (headings), `#4A4A5A` (body), `#8A8A9A` (muted)
-- **Green**: `#2D6A4F` for checkmarks and WhatsApp CTAs
-- **Typography**: Cormorant Garamond (display) + DM Sans (body)
+## Phase 1: Critical Fixes
 
-## Pages & Sections
+### 1. Accessibility — Gold contrast fix
+- Darken gold text color to `#8B6914` for body text usage while keeping `#BFA06A` for backgrounds/borders
+- Add a `--gold-text` CSS variable for accessible text contrast
+- Add visible focus rings to all interactive elements (btn-gold, btn-ghost, accordion buttons)
 
-### 1. Sticky Navigation
-- Logo: "VITA**BRIDGE**" (BRIDGE in gold)
-- Language toggle: ID | EN | 中文
-- WhatsApp CTA button (gold outline)
-- Scrolled state: white bg with subtle bottom shadow
+### 2. Typography scale increase
+- Base body: 15px (`text-[15px]`)
+- Card body: 14px minimum
+- Package price: 36-40px (dominant element)
+- Eyebrow: 11px (up from 10px)
+- Muted text: darken to 45% lightness
 
-### 2. Hero (Full Viewport)
-- Clean white background with subtle gold geometric accent lines
-- Large serif headline with language switching
-- Two CTAs: gold fill "Begin Journey" + ghost "Browse Packages"
-- Subtle scroll indicator
+### 3. Navigation overhaul
+- Add section links to Nav: Packages, Journey, About, Contact
+- Mobile hamburger: include section links + language + CTA
+- Add `scroll-behavior: smooth` to html
+- Add floating back-to-top button
+- Add floating WhatsApp FAB (bottom-right, mobile only)
 
-### 3. Trust Bar
-- 4 trust items in a warm off-white strip with gold dividers
-- Icons + text for each trust point
+## Phase 2: Marketplace Redesign
 
-### 4. ⭐ Health Screening Marketplace (Core Feature)
-- **Provider Selector**: 4 tabbed cards (DA MedSuites, Parkway, Raffles, Healthway) with active gold top-border
-- **Gender Filter**: All | Male | Female toggle
-- **Package Cards Grid**: Responsive grid showing all packages for selected provider
-  - Tier badge, price in gold, "Best for" text
-  - Expandable accordion categories showing included tests
-  - "Not included" shown as muted pills
-  - "Add to Compare" checkbox
-  - WhatsApp enquiry button (gold)
-- **Compare Mode**: Side-by-side table (up to 3 packages) with sticky header, checkmark/dash for each test, WhatsApp buttons per package
-- **Disclaimer bar** at bottom
+### 4. Provider selector enhancement
+- Show tagline under each provider name
+- Add test count badge ("18 packages" or "6 plans")
+- Horizontal scroll indicator (dots) on mobile
 
-### 5. The Journey (4 Steps)
-- Numbered gold circles: Consultation → Screening → JB Regenerative → Follow-up
+### 5. Package card redesign
+- Move compare checkbox to card header row (next to tier badge)
+- Make price the largest element (font-serif text-4xl)
+- Add summary bar: "47 tests · Half day · Cardiac + Cancer"
+- Handle "Everything in X, plus:" as a styled note, not empty accordion
+- Equalize card heights with a "Show all tests" expand pattern
+- Reduce mobile padding (p-6 → p-4)
 
-### 6. Concierge Add-Ons
-- 6-card grid: Limousine, Hotel, Ferry, Concierge, Translation, Monitoring
+### 6. Compare table mobile fix
+- Sticky first column on mobile
+- Better column sizing and scroll indicators
 
-### 7. European Wellness Puteri Harbour
-- Two-column layout with stats and exclusive access info
+### 7. Price sorting
+- Add "Sort by: Price (low→high) | Price (high→low)" toggle above package grid
 
-### 8. Community & Events
-- 3 event cards with "Register Interest" WhatsApp links
+### 8. "Help me choose" mini-quiz
+- Add a CTA above the provider selector: "Not sure which package? Let us help"
+- Simple 3-question flow: Age range, Primary concern, Budget range
+- Highlights 1-2 recommended packages
 
-### 9. Testimonial
-- Centered serif quote with gold quotation mark
+## Phase 3: Conversion & Trust
 
-### 10. Footer CTA
-- Large headline + WhatsApp button
+### 9. Floating WhatsApp FAB
+- Fixed bottom-right on all screen sizes
+- Pulse animation on first load
+- Context-aware: if user has viewed a specific package, pre-fill that package name
 
-### 11. Footer
-- Logo + legal disclaimer
+### 10. Testimonial carousel
+- Replace single quote with 3-5 testimonials
+- Auto-rotating carousel with dots
+- Include name, location, and which provider they used
 
-## Data Layer
-- `data/providers.ts` — Full PROVIDERS array with all 4 providers and their packages
-- `data/translations.ts` — All UI copy in id/en/zh
-- Language state managed via useState in App.tsx
+### 11. Enquiry form backend
+- Connect to Supabase for storing submissions
+- Add email notification (or log to a table for now)
+- Add "We'll respond within 2 hours" copy
 
-## Key Interactions
-- Language switching (ID/EN/ZH) updates all text
-- Provider tab selection filters packages
-- Gender filter shows/hides gender-specific packages
-- Accordion expand/collapse for test categories
-- Compare mode: select up to 3 packages → side-by-side table
-- All CTAs → WhatsApp with pre-filled messages (package-specific)
-- Framer Motion scroll animations on all sections
-- Fully responsive (mobile-first)
+### 12. Section consolidation
+- Merge Journey + Add-Ons into "Your Experience" section
+- Move Events below European Wellness
+- Add micro-testimonials near package card CTAs
 
-## File Structure
-```
-src/
-  App.tsx
-  data/providers.ts
-  data/translations.ts
-  components/
-    Nav.tsx, Hero.tsx, TrustBar.tsx
-    ScreeningMarketplace.tsx (with sub-components)
-    Journey.tsx, AddOns.tsx, EuropeanWellness.tsx
-    Events.tsx, Testimonial.tsx, FooterCta.tsx, Footer.tsx
-```
+## Technical Details
+
+### Files to modify:
+- `src/index.css` — contrast fixes, smooth scroll, FAB styles
+- `tailwind.config.ts` — add gold-text color
+- `src/components/Nav.tsx` — section links, mobile nav
+- `src/components/ScreeningMarketplace.tsx` — card redesign, sorting, sticky compare column, help-me-choose
+- `src/components/CategoryAccordion.tsx` — ARIA attributes, empty state handling
+- `src/components/Testimonial.tsx` — carousel with multiple quotes
+- `src/components/Hero.tsx` — font size adjustments
+- `src/components/Journey.tsx` + `src/components/AddOns.tsx` — merge into single component
+- `src/components/FooterCta.tsx` — add response time copy
+- `src/data/translations.ts` — new copy for all additions
+- New: `src/components/FloatingWhatsApp.tsx` — FAB component
+- New: `src/components/BackToTop.tsx` — scroll-to-top button
+- New: `src/components/HelpMeChoose.tsx` — guided quiz modal
+
+### Estimated scope:
+- Phase 1 (Critical): ~4 files, mostly CSS + Nav
+- Phase 2 (Marketplace): ~3 files, significant logic changes
+- Phase 3 (Conversion): ~5 files, new components + data
 
