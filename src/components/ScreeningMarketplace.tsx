@@ -303,7 +303,7 @@ const PackageCard = ({ pkg, provider, lang, index, isComparing, onToggleCompare,
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
-      className={`border rounded-sm bg-card flex flex-col transition-all duration-300 hover:shadow-lg ${
+      className={`border rounded-sm bg-card flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
         pkg.featured ? 'border-primary shadow-md ring-1 ring-primary/10' : 'border-border hover:border-primary/30'
       }`}
     >
@@ -380,7 +380,7 @@ const PackageCard = ({ pkg, provider, lang, index, isComparing, onToggleCompare,
           className="btn-gold text-sm w-full flex items-center justify-center gap-2 py-3.5"
         >
           <MessageCircle className="w-4 h-4" />
-          {t.enquireViaWa[lang]}
+          {lang === 'id' ? `Tanya tentang ${pkg.name}` : lang === 'zh' ? `咨询 ${pkg.name}` : `Enquire about ${pkg.name}`}
         </a>
       </div>
     </motion.div>

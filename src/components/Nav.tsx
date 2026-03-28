@@ -12,9 +12,15 @@ const Nav = ({ lang, setLang }: NavProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const [scrollProgress, setScrollProgress] = useState(0);
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? Math.min(window.scrollY / docHeight, 1) : 0);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -123,6 +129,15 @@ const Nav = ({ lang, setLang }: NavProps) => {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Scroll progress bar */}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] origin-left transition-transform duration-150"
+        style={{
+          background: `hsl(var(--gold))`,
+          transform: `scaleX(${scrollProgress})`,
+          width: '100%',
+        }}
+      />
     </motion.nav>
   );
 };

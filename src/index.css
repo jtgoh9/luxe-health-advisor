@@ -106,7 +106,7 @@
   }
 
   .btn-gold {
-    @apply inline-flex items-center justify-center px-8 py-3 text-sm font-medium tracking-wide transition-all duration-300;
+    @apply inline-flex items-center justify-center px-8 py-3 text-sm font-medium tracking-wide transition-all duration-200;
     background: hsl(var(--gold));
     color: hsl(var(--navy));
     border-radius: 2px;
@@ -116,13 +116,17 @@
     background: hsl(var(--gold-light));
   }
 
+  .btn-gold:active {
+    transform: scale(0.98);
+  }
+
   .btn-gold:focus-visible {
     outline: 2px solid hsl(var(--gold));
     outline-offset: 2px;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center px-8 py-3 text-sm font-medium tracking-wide transition-all duration-300;
+    @apply inline-flex items-center justify-center px-8 py-3 text-sm font-medium tracking-wide transition-all duration-200;
     background: transparent;
     color: hsl(var(--gold-text));
     border: 1px solid hsl(var(--gold));
@@ -131,6 +135,10 @@
 
   .btn-ghost:hover {
     background: hsl(var(--gold-pale));
+  }
+
+  .btn-ghost:active {
+    transform: scale(0.98);
   }
 
   .btn-ghost:focus-visible {
