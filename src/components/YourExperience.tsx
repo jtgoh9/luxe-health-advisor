@@ -34,7 +34,7 @@ const YourExperience = ({ lang }: YourExperienceProps) => {
           className="text-center mb-16"
         >
           <div className="section-eyebrow justify-center mb-4">{t.journeyEyebrow[lang]}</div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground">{t.journeyTitle[lang]}</h2>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.15]">{t.journeyTitle[lang]}</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-24">
@@ -64,7 +64,7 @@ const YourExperience = ({ lang }: YourExperienceProps) => {
           className="text-center mb-14"
         >
           <div className="section-eyebrow justify-center mb-4">{t.addOnsEyebrow[lang]}</div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground">{t.addOnsTitle[lang]}</h2>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.15]">{t.addOnsTitle[lang]}</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

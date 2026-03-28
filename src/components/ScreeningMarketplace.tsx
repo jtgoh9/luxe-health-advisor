@@ -78,7 +78,7 @@ const ScreeningMarketplace = ({ lang }: MarketplaceProps) => {
           className="text-center mb-14"
         >
           <div className="section-eyebrow justify-center mb-4">{t.marketplaceEyebrow[lang]}</div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground mb-4">{t.marketplaceTitle[lang]}</h2>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.15] mb-4">{t.marketplaceTitle[lang]}</h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto">{t.marketplaceSub[lang]}</p>
         </motion.div>
 
@@ -325,8 +325,8 @@ const PackageCard = ({ pkg, provider, lang, index, isComparing, onToggleCompare,
             {t.addToCompare[lang]}
           </label>
         </div>
-        <h3 className="font-serif text-2xl sm:text-3xl text-foreground mb-1">{pkg.name}</h3>
-        <p className="font-serif text-3xl sm:text-4xl text-gold-text mb-4 font-semibold">{pkg.price_display}</p>
+        <h3 className="font-serif text-2xl sm:text-3xl font-light text-foreground mb-1">{pkg.name}</h3>
+        <p className="font-serif text-xl sm:text-2xl text-gold-text mb-4 font-medium">{pkg.price_display}</p>
 
         {/* Summary bar */}
         <div className="flex flex-wrap gap-2 mb-4">

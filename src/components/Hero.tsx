@@ -37,7 +37,7 @@ const Hero = ({ lang }: HeroProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-foreground leading-[1.1] whitespace-pre-line mb-8"
+          className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[1.1] whitespace-pre-line mb-8"
         >
           {t.heroTitle[lang]}
         </motion.h1>

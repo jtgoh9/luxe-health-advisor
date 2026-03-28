@@ -34,7 +34,7 @@ const EnquiryForm = ({ lang }: EnquiryFormProps) => {
           className="text-center mb-10"
         >
           <div className="section-eyebrow justify-center mb-4">{t.enquiryEyebrow[lang]}</div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground mb-3">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.15] mb-3">
             {t.enquiryTitle[lang]}
           </h2>
           <p className="text-base text-muted-foreground">{t.enquirySub[lang]}</p>

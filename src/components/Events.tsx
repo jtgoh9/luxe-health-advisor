@@ -56,7 +56,7 @@ const Events = ({ lang }: EventsProps) => {
           className="text-center mb-14"
         >
           <div className="section-eyebrow justify-center mb-4">{t.eventsEyebrow[lang]}</div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.15]">
             {t.eventsTitle[lang]}
           </h2>
         </motion.div>

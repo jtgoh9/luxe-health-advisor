@@ -42,7 +42,7 @@ const Nav = ({ lang, setLang }: NavProps) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-4">
         {/* Logo */}
-        <a href="#" className="text-2xl font-serif font-semibold tracking-wide text-foreground">
+        <a href="#" className="text-xl font-serif font-light tracking-[0.15em] text-foreground">
           VITA<span className="text-primary">BRIDGE</span>
         </a>
 

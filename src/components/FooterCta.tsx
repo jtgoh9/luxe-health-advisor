@@ -8,14 +8,14 @@ interface FooterCtaProps {
 
 const FooterCta = ({ lang }: FooterCtaProps) => {
   return (
-    <section className="py-24 sm:py-32 bg-background">
+    <section className="py-20 sm:py-28 bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.15] mb-5">
             {t.footerCtaTitle[lang]}
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-4">{t.footerCtaSub[lang]}</p>
