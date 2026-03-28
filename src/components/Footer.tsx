@@ -60,7 +60,7 @@ const Footer = ({ lang }: FooterProps) => {
                   rel="noopener noreferrer"
                   className="text-base text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  WhatsApp: +65 {WHATSAPP.slice(2, 6)} {WHATSAPP.slice(6)}
+                  {lang === 'id' ? 'Chat via WhatsApp' : lang === 'zh' ? '通过WhatsApp联系' : 'Chat via WhatsApp'}
                 </a>
               </li>
               <li>
@@ -77,9 +77,6 @@ const Footer = ({ lang }: FooterProps) => {
           <div>
             <p className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} VitaBridge. All rights reserved.
-            </p>
-            <p className="text-[10px] text-muted-foreground/60 mt-1">
-              {lang === 'id' ? 'Pencocokan cerdas · Ketersediaan real-time · Komunikasi terenkripsi' : lang === 'zh' ? '智能匹配 · 实时可用性 · 加密通信' : 'AI-assisted matching · Real-time availability · Encrypted communications'}
             </p>
           </div>
           <p className="text-xs text-muted-foreground max-w-xl text-center sm:text-right leading-relaxed">

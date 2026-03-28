@@ -16,9 +16,9 @@ export const t: Record<string, Record<Lang, string>> = {
     zh: "您的健康。\n家人的安心与保障。"
   },
   heroSub: {
-    id: "VitaBridge menghubungkan Anda dengan penyedia skrining kesehatan terbaik Singapura — dengan layanan concierge premium dari awal hingga akhir.",
-    en: "VitaBridge connects you with Singapore's top health screening providers — with premium concierge service from start to finish.",
-    zh: "VitaBridge 为您连接新加坡顶级健康筛查机构 — 从始至终提供尊享礼宾服务。"
+    id: "Satu-satunya concierge kesehatan dengan tim berbahasa Indonesia di Singapura — dan akses prioritas eksklusif ke European Wellness Puteri Harbour untuk program regeneratif.",
+    en: "The only health concierge with a Bahasa Indonesia-speaking team on the ground in Singapore — and exclusive priority access to European Wellness Puteri Harbour for regenerative programmes.",
+    zh: "唯一拥有驻新加坡印尼语团队的健康礼宾服务 — 并享有 European Wellness Puteri Harbour 再生医学项目的专属优先通道。"
   },
   heroCta1: { id: "Mulai Perjalanan", en: "Begin Journey", zh: "开启旅程" },
   heroCta2: { id: "Lihat Paket", en: "Browse Packages", zh: "查看方案" },
@@ -65,7 +65,7 @@ export const t: Record<string, Record<Lang, string>> = {
   step3: { id: "Program Regeneratif JB (Opsional)", en: "JB Regenerative Programme (Optional)", zh: "JB再生医学项目（可选）" },
   step3Desc: { id: "Akses eksklusif ke European Wellness Center di Puteri Harbour untuk terapi sel dan program regeneratif.", en: "Exclusive access to European Wellness Center at Puteri Harbour for cell therapy and regenerative programmes.", zh: "独家访问 Puteri Harbour 的 European Wellness Center，提供细胞治疗和再生医学项目。" },
   step4: { id: "Tindak Lanjut 90 Hari", en: "90-Day Follow-Up", zh: "90天跟进" },
-  step4Desc: { id: "Tim medis kami memantau hasil skrining Anda, mengoordinasikan rujukan spesialis, memastikan tindakan pencegahan diterapkan, dan menjadi mitra kesehatan Anda selama 3 bulan.", en: "Our medical team monitors your screening results, coordinates specialist referrals, ensures preventive actions are taken, and serves as your health partner for 3 months.", zh: "我们的医疗团队在3个月内监控您的筛查结果，协调专家转介，确保落实预防措施，成为您的健康伙伴。" },
+  step4Desc: { id: "Tim concierge kami membagikan laporan skrining Anda, membantu mengkoordinasikan rujukan spesialis jika diperlukan, dan tetap menghubungi Anda selama 90 hari untuk mendukung langkah selanjutnya.", en: "Our concierge team shares your screening report, helps coordinate any specialist referrals if needed, and stays in touch for 90 days to support your next steps.", zh: "我们的礼宾团队将为您分享筛查报告，协助协调所需的专科转诊，并在90天内持续跟进，支持您的后续健康步骤。" },
 
   // Add-ons
   addOnsEyebrow: { id: "LAYANAN TAMBAHAN", en: "CONCIERGE ADD-ONS", zh: "礼宾附加服务" },
