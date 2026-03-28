@@ -58,7 +58,7 @@ const CategoryAccordion = ({ category, defaultOpen = false }: CategoryAccordionP
               {category.tests.map((test, i) => (
                 <div key={i} className="flex items-start gap-2">
                   <Check className="w-3.5 h-3.5 text-green shrink-0 mt-0.5" />
-                  <span className="text-sm text-muted-foreground leading-relaxed">{test}</span>
+                  <span className="text-base text-muted-foreground leading-relaxed">{test}</span>
                 </div>
               ))}
             </div>

@@ -84,7 +84,7 @@ const Events = ({ lang }: EventsProps) => {
               </div>
 
               <h3 className="font-serif text-xl text-foreground mb-3">{event.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">{event.desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed mb-5 flex-1">{event.desc}</p>
 
               <a
                 href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(event.waMsg)}`}

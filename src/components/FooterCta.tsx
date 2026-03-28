@@ -28,8 +28,7 @@ const FooterCta = ({ lang }: FooterCtaProps) => {
               href={waLink(lang)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-10 py-4 text-base font-medium tracking-wide transition-all duration-300 rounded-sm text-white"
-              style={{ background: 'hsl(153, 42%, 30%)' }}
+              className="btn-gold text-base px-10 py-4 gap-2"
             >
               <MessageCircle className="w-4 h-4" />
               {t.footerCtaBtn[lang]}

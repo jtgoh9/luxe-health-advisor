@@ -98,12 +98,12 @@ const Nav = ({ lang, setLang }: NavProps) => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-base font-medium text-foreground py-2 border-b border-border"
+                  className="text-base font-medium text-foreground py-3 hover:bg-secondary/50 px-2 rounded-sm transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="flex items-center gap-1 bg-secondary rounded-sm p-0.5 self-start mt-2">
+              <div className="flex items-center gap-1 bg-secondary rounded-sm p-0.5 self-center mt-2">
                 {langs.map(({ key, label }) => (
                   <button
                     key={key}
