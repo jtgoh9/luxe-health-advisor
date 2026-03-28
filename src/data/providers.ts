@@ -193,6 +193,24 @@ export const PROVIDERS: Provider[] = [
         add_ons_available: true
       },
       {
+        id: "ps-screen-senior-comp",
+        name: "Screen Senior Comprehensive",
+        tier: "Elite",
+        price_sgd: 6388,
+        price_display: "SGD 6,388",
+        best_for: "Seniors 60+ — functional decline, high-risk diseases, digestive tract cancers",
+        duration: "Full day",
+        highlights: "Comprehensive health check for seniors. Screens for functional decline, high-risk diseases and digestive tract cancers.",
+        categories: [
+          { name: "Everything in Screen Senior Executive, plus:", tests: [] },
+          { name: "Digestive Tract Cancer Screening", tests: ["Colonoscopy (colon cancer)", "CEA + CA19-9 (colorectal / pancreatic)", "H. Pylori test (gastric cancer risk)"] },
+          { name: "Functional Decline Assessment", tests: ["Frailty index assessment", "Cognitive screening (MMSE)", "Bone density (DEXA)", "Fall risk assessment"] },
+          { name: "Advanced Cardiac & Vascular", tests: ["CT coronary calcium scoring", "Carotid intima-media thickness", "ABI (peripheral artery disease)"] }
+        ],
+        not_included: ["Full body MRI", "Gastroscopy", "LucenceINSIGHT DNA cancer test"],
+        add_ons_available: true
+      },
+      {
         id: "ps-screen-excelsior", name: "Screen Excelsior", tier: "Ultra VIP", price_sgd: 12388, price_display: "From SGD 12,388",
         best_for: "Ultra HNW — bespoke, fully concierged, same-day results", duration: "Full day (4–6 hours)",
         highlights: "Bespoke all-inclusive screening. Private lounge. Gourmet dining. Limo transfers included.",
