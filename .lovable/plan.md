@@ -1,119 +1,86 @@
 
 
-# Audit of Proposed 7 Fixes
+# Typography & Visual Polish — Audit Review and Implementation Plan
 
-## Overall Assessment
+## Audit Assessment
 
-The fixes are well-scoped and mostly correct. Here is a fix-by-fix review with issues flagged.
-
----
-
-## Fix 1: Dark Luxury Theme — REJECT
-
-**Problem**: The approved and implemented design direction is "white premium with gold accents." This fix reverts the entire color system to a dark navy theme (`#0D1117` background), which directly contradicts the approved plan. The `--gold-text` value is also changed to `39 55% 65%` (a lighter gold for dark backgrounds) — this would break the WCAG-compliant `--gold-text` we set at `39 60% 28%` for white backgrounds.
-
-**Recommendation**: Do not apply. The current white premium theme is the approved direction. If a dark mode is desired later, implement it as a toggle using Tailwind's `dark:` variant, not a wholesale replacement.
+The audit is thorough and mostly accurate. Here's what we should implement, skip, and why.
 
 ---
 
-## Fix 2: Compare Table — Group by Category — APPROVE WITH ADJUSTMENT
+## REJECT: Fix 1 — gold-text contrast for dark theme
 
-**Concept is correct**: The current compare table lists every individual test (50+ rows for high-tier packages), which is unusable. Grouping by category name is the right approach.
-
-**Issues to fix in the proposal**:
-- The proposal references `allTests` at specific line numbers that may have shifted. The actual code is at lines 47-56 and 206-218 currently — these match.
-- The category-level comparison loses granularity. A user comparing Pine vs Sequoia won't see *which* tests differ within a category. Consider adding an expandable row per category that shows individual tests on click.
-- Minor: `mx-auto` on the Check icon is good for centering.
-
-**Recommendation**: Apply Change A and Change B as written. They're correct for the current codebase. Consider a follow-up to add expandable category rows.
+The audit's #1 critical finding assumes a dark theme will be applied. **We rejected the dark theme** in the previous audit. Our background is white (`0 0% 100%`), and `--gold-text: 39 60% 28%` achieves ~4.8:1 contrast on white — passing WCAG AA. No change needed unless we add dark mode later.
 
 ---
 
-## Fix 3: Remove Thailand & Vietnam — APPROVE
+## APPROVE: 9 Fixes to Implement
 
-**All three string replacements are correct** and match the current codebase exactly (lines 12, 65, 66 in translations.ts). The replacement text is clean and properly scoped to Singapore + JB only.
+### 1. H2 line-height (Critical — all section headings)
+**Why**: All 7 section H2s use `font-serif text-3xl sm:text-4xl md:text-5xl font-light` with no `leading-` class. At large sizes, Cormorant Garamond lines will collide on wrap. Verified in code.
+**Change**: Add `leading-[1.15]` to every section H2 across: `ScreeningMarketplace.tsx` (line 81), `YourExperience.tsx`, `EuropeanWellness.tsx`, `Events.tsx` (line 59), `EnquiryForm.tsx` (line 37), `FooterCta.tsx` (line 18), `Testimonial.tsx`.
 
-**Recommendation**: Apply as-is.
+### 2. Price vs name hierarchy (Critical — purchase psychology)
+**Why**: Verified at line 329: price is `text-3xl sm:text-4xl font-semibold`, name at line 328 is `text-2xl sm:text-3xl` with no weight. Price visually dominates the package name — wrong for a trust-first product.
+**Change** in `ScreeningMarketplace.tsx`:
+- Package name (line 328): `text-2xl sm:text-3xl font-light` — make it the hero
+- Price (line 329): `text-xl sm:text-2xl font-medium` — subordinate but clear
 
----
+### 3. Hero H1 mobile size (High)
+**Why**: `text-5xl` (48px) at mobile is too large for a multi-line heading. Verified at Hero.tsx.
+**Change**: `text-5xl sm:text-6xl` → `text-4xl sm:text-5xl` (keep md and lg as-is)
 
-## Fix 4: "Everything in X, plus:" Divider — APPROVE WITH MINOR FIX
+### 4. H3 font-weight fix (Medium)
+**Why**: H2s are `font-light` (300), H3s default to 400 — sub-headings visually heavier than headings.
+**Change**: Add `h3, h4, h5, h6 { font-weight: 300; }` in `index.css`
 
-**Concept is excellent**: The current styled note looks like a broken interactive element. The centred pill divider is much clearer.
+### 5. Eyebrow tracking + size (Medium)
+**Why**: `tracking-[4px]` at 11px = 36% letter-spacing — too wide. px doesn't scale.
+**Change** in `index.css` `.section-eyebrow`: `text-[11px] tracking-[4px]` → `text-[12px] tracking-[0.25em]`
 
-**Issue**: `bg-primary/8` is not valid Tailwind syntax. Tailwind opacity modifiers use increments of 5 (e.g., `bg-primary/5`, `bg-primary/10`). This will silently fail and render no background.
+### 6. Nav logo refinement (High)
+**Why**: `font-semibold` (600) at 24px all-caps is too heavy for luxury. Verified in Nav.tsx.
+**Change**: `text-2xl font-serif font-semibold tracking-wide` → `text-xl font-serif font-light tracking-[0.15em]`. Also update Footer.tsx logo to match.
 
-**Fix**: Change `bg-primary/8` to `bg-primary/5` or `bg-primary/10`.
+### 7. Testimonial quote mark size (Low)
+**Why**: `text-7xl sm:text-8xl` (72-96px) overwhelms the quote content.
+**Change**: `text-7xl sm:text-8xl` → `text-5xl sm:text-6xl` in Testimonial.tsx
 
-Also `border-primary/15` has the same issue — change to `border-primary/10` or `border-primary/20`.
+### 8. DM Sans weight 600 (Low)
+**Why**: Code uses `font-semibold` but only loads 300/400/500. Browser synthesises 600.
+**Change**: Update Google Fonts import in `index.css` to add weight 600.
 
-**Recommendation**: Apply with the opacity values corrected.
-
----
-
-## Fix 5: EW Therapy Tags Translation — APPROVE
-
-**Correct and clean**. The hardcoded English labels at lines 17-24 of `EuropeanWellness.tsx` match the search pattern exactly. The replacement properly uses the `lang` prop that's already available in the component.
-
-**Recommendation**: Apply as-is.
-
----
-
-## Fix 6: Events with Dates & Specific WA Messages — APPROVE WITH NOTE
-
-**Good improvements**: Adding dates and event-specific WhatsApp messages is valuable.
-
-**Issues**:
-- The import line adds `WHATSAPP` from translations, which is exported. However, the current `Events.tsx` imports `waLink` — the new version builds links manually with `WHATSAPP`. This is fine but creates two patterns for WA link generation. For consistency, could use `waLink` with a custom message parameter, but the current approach works.
-- The `flex flex-col` and `mt-auto` additions for equal-height cards are good.
-- Hardcoded dates ("Q3 2026", "Q4 2026") should ideally be in the translations object, but for now this is acceptable.
-
-**Recommendation**: Apply as-is.
-
----
-
-## Fix 7: Parkway Prices + Missing Package — APPROVE WITH CAUTION
-
-**Price corrections** (625→585, 998→958, 2728→2688): These claim to be verified from Parkway's live website. The changes are small adjustments that look plausible.
-
-**New package** (Screen Senior Comprehensive at SGD 6,388): Well-structured, fills a logical gap between Senior Executive (SGD 2,688) and Excelsior (SGD 12,388).
-
-**Issue**: The insertion point uses a "find and replace" pattern that splices between the closing of `ps-screen-senior` and the opening of `ps-screen-excelsior`. The search pattern matches the current code correctly.
-
-**Recommendation**: Apply. The disclaimer already covers price verification.
+### 9. Section padding standardisation (Medium)
+**Why**: Random mix of `py-24` and `py-32` across sections with no pattern.
+**Change**: Standardise all content sections to `py-24 sm:py-32`. FooterCta to `py-20 sm:py-28`.
 
 ---
 
-## Bonus: OG Image & Canonical — DEFER
+## DEFER: 3 Items
 
-**Correct advice**: The current OG image URL points to a Lovable preview snapshot that will break. The canonical URL `vitabridge.com` doesn't exist. However, this should only be done once a real domain and branded image are ready.
-
-**Recommendation**: Defer until domain is registered.
+| Item | Reason |
+|------|--------|
+| **Body text-sm → text-base** | High risk — 97 instances across all components. Could break card layouts, accordion density, and mobile spacing. Needs careful per-component review, not a bulk find-replace. Defer to a focused pass. |
+| **Border radius cleanup** | Most `rounded-md/lg` instances come from shadcn/ui components (36+ in ui/ folder). Changing those risks breaking the design system. Custom components already use `rounded-sm` correctly. Low visual impact. |
+| **Container width consolidation** | Current widths (max-w-7xl for wide, max-w-6xl for standard, max-w-3xl/2xl for focused) are actually intentional — the audit acknowledges the logic is correct. Reducing to 3 widths would change Testimonial and Form layouts. Low priority. |
 
 ---
 
-## Summary
+## Files to Modify
 
-| Fix | Verdict | Notes |
-|-----|---------|-------|
-| 1. Dark theme | **REJECT** | Contradicts approved white premium direction |
-| 2. Compare by category | **APPROVE** | Apply as-is, code matches |
-| 3. Remove Thailand/Vietnam | **APPROVE** | Apply as-is |
-| 4. Divider styling | **APPROVE** | Fix `bg-primary/8` → `bg-primary/5` and `border-primary/15` → `border-primary/10` |
-| 5. EW therapy translations | **APPROVE** | Apply as-is |
-| 6. Events dates + WA | **APPROVE** | Apply as-is |
-| 7. Parkway prices + new pkg | **APPROVE** | Apply as-is |
-| Bonus. OG meta | **DEFER** | Wait for real domain |
+| File | Changes |
+|------|---------|
+| `src/index.css` | Eyebrow tracking/size, H3 weight rule, DM Sans 600 import |
+| `src/components/Hero.tsx` | Mobile H1 size |
+| `src/components/Nav.tsx` | Logo weight/size/tracking |
+| `src/components/Footer.tsx` | Logo weight to match Nav |
+| `src/components/ScreeningMarketplace.tsx` | H2 leading, price/name hierarchy |
+| `src/components/YourExperience.tsx` | H2 leading |
+| `src/components/EuropeanWellness.tsx` | H2 leading |
+| `src/components/Events.tsx` | H2 leading, section padding |
+| `src/components/EnquiryForm.tsx` | H2 leading |
+| `src/components/FooterCta.tsx` | H2 leading, section padding |
+| `src/components/Testimonial.tsx` | H2 leading (if present), quote mark size |
 
-## Implementation Plan
-
-Apply fixes 2-7 (skipping fix 1) in order, with the Tailwind opacity correction on fix 4. Total: 5 files modified, ~30 minutes of work.
-
-### Files to modify:
-- `src/components/ScreeningMarketplace.tsx` — Fix 2 (category-grouped compare table)
-- `src/data/translations.ts` — Fix 3 (remove Thailand/Vietnam references)
-- `src/components/CategoryAccordion.tsx` — Fix 4 (divider styling with corrected opacity)
-- `src/components/EuropeanWellness.tsx` — Fix 5 (translated therapy tags)
-- `src/components/Events.tsx` — Fix 6 (dates + event-specific WA messages)
-- `src/data/providers.ts` — Fix 7 (Parkway price corrections + new package)
+Total: 11 files, focused CSS and className changes. No logic changes.
 
