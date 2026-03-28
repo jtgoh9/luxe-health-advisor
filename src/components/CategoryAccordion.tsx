@@ -14,7 +14,7 @@ const CategoryAccordion = ({ category, defaultOpen = false }: CategoryAccordionP
   if (category.tests.length === 0) {
     return (
       <div className="mb-2">
-        <p className="text-[11px] font-medium text-foreground italic">{category.name}</p>
+        <p className="text-sm font-medium text-foreground italic">{category.name}</p>
       </div>
     );
   }
@@ -23,15 +23,15 @@ const CategoryAccordion = ({ category, defaultOpen = false }: CategoryAccordionP
     <div className="mb-2">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-full text-left py-1.5 group"
+        className="flex items-center justify-between w-full text-left py-2 group"
       >
-        <span className="text-[11px] font-medium text-foreground group-hover:text-primary transition-colors">
+        <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
           {category.name}
         </span>
-        <div className="flex items-center gap-1.5">
-          <span className="text-[10px] text-muted-foreground">{category.tests.length}</span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">{category.tests.length}</span>
           <ChevronDown
-            className={`w-3 h-3 text-muted-foreground transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+            className={`w-3.5 h-3.5 text-muted-foreground transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           />
         </div>
       </button>
@@ -44,11 +44,11 @@ const CategoryAccordion = ({ category, defaultOpen = false }: CategoryAccordionP
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="pl-2 pb-2 space-y-1">
+            <div className="pl-3 pb-3 space-y-1.5">
               {category.tests.map((test, i) => (
-                <div key={i} className="flex items-start gap-1.5">
-                  <Check className="w-3 h-3 text-green shrink-0 mt-0.5" />
-                  <span className="text-[11px] text-muted-foreground leading-relaxed">{test}</span>
+                <div key={i} className="flex items-start gap-2">
+                  <Check className="w-3.5 h-3.5 text-green shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground leading-relaxed">{test}</span>
                 </div>
               ))}
             </div>

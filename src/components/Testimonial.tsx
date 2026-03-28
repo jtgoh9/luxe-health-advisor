@@ -7,18 +7,18 @@ interface TestimonialProps {
 
 const Testimonial = ({ lang }: TestimonialProps) => {
   return (
-    <section className="py-20 sm:py-28 bg-secondary">
+    <section className="py-24 sm:py-32 bg-secondary">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="font-serif text-6xl text-primary leading-none">"</span>
-          <blockquote className="font-serif text-xl sm:text-2xl text-foreground font-light leading-relaxed italic mt-2 mb-6">
+          <span className="font-serif text-7xl text-primary leading-none">"</span>
+          <blockquote className="font-serif text-2xl sm:text-3xl text-foreground font-light leading-relaxed italic mt-2 mb-8">
             {t.testimonialQuote[lang]}
           </blockquote>
-          <p className="text-sm text-muted-foreground">{t.testimonialAuthor[lang]}</p>
+          <p className="text-base text-muted-foreground">{t.testimonialAuthor[lang]}</p>
         </motion.div>
       </div>
     </section>

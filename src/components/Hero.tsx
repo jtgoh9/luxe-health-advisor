@@ -13,7 +13,6 @@ const Hero = ({ lang }: HeroProps) => {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-10 w-64 h-64 rounded-full opacity-[0.04]" style={{ background: 'radial-gradient(circle, hsl(39, 30%, 56%), transparent)' }} />
         <div className="absolute bottom-40 left-10 w-96 h-96 rounded-full opacity-[0.03]" style={{ background: 'radial-gradient(circle, hsl(39, 30%, 56%), transparent)' }} />
-        {/* Grid lines */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
@@ -29,7 +28,7 @@ const Hero = ({ lang }: HeroProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="section-eyebrow justify-center mb-8"
+          className="section-eyebrow justify-center mb-8 text-xs"
         >
           {t.heroEyebrow[lang]}
         </motion.div>
@@ -38,7 +37,7 @@ const Hero = ({ lang }: HeroProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-serif text-4xl sm:text-5xl md:text-7xl font-light text-foreground leading-tight whitespace-pre-line mb-6"
+          className="font-serif text-5xl sm:text-6xl md:text-7xl font-light text-foreground leading-tight whitespace-pre-line mb-8"
         >
           {t.heroTitle[lang]}
         </motion.h1>
@@ -47,7 +46,7 @@ const Hero = ({ lang }: HeroProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
+          className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto mb-12 leading-relaxed"
         >
           {t.heroSub[lang]}
         </motion.p>
@@ -58,16 +57,15 @@ const Hero = ({ lang }: HeroProps) => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-gold">
+          <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-gold text-sm">
             {t.heroCta1[lang]}
           </a>
-          <a href="#marketplace" className="btn-ghost">
+          <a href="#marketplace" className="btn-ghost text-sm">
             {t.heroCta2[lang]}
           </a>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 8, 0] }}
