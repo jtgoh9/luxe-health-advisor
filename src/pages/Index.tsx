@@ -9,6 +9,7 @@ import AddOns from '@/components/AddOns';
 import EuropeanWellness from '@/components/EuropeanWellness';
 import Events from '@/components/Events';
 import Testimonial from '@/components/Testimonial';
+import EnquiryForm from '@/components/EnquiryForm';
 import FooterCta from '@/components/FooterCta';
 import Footer from '@/components/Footer';
 
@@ -26,6 +27,7 @@ const Index = () => {
       <EuropeanWellness lang={lang} />
       <Events lang={lang} />
       <Testimonial lang={lang} />
+      <EnquiryForm lang={lang} />
       <FooterCta lang={lang} />
       <Footer lang={lang} />
     </div>

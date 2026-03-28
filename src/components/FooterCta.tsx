@@ -8,27 +8,32 @@ interface FooterCtaProps {
 
 const FooterCta = ({ lang }: FooterCtaProps) => {
   return (
-    <section className="py-20 sm:py-28 bg-background">
+    <section className="py-24 sm:py-32 bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground mb-5">
             {t.footerCtaTitle[lang]}
           </h2>
-          <p className="text-sm text-muted-foreground mb-8">{t.footerCtaSub[lang]}</p>
-          <a
-            href={waLink(lang)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-10 py-4 text-sm font-medium tracking-wide transition-all duration-300 rounded-sm"
-            style={{ background: 'hsl(153, 42%, 30%)', color: '#fff' }}
-          >
-            <MessageCircle className="w-4 h-4" />
-            {t.footerCtaBtn[lang]}
-          </a>
+          <p className="text-base text-muted-foreground mb-10">{t.footerCtaSub[lang]}</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={waLink(lang)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-10 py-4 text-sm font-medium tracking-wide transition-all duration-300 rounded-sm"
+              style={{ background: 'hsl(153, 42%, 30%)', color: '#fff' }}
+            >
+              <MessageCircle className="w-4 h-4" />
+              {t.footerCtaBtn[lang]}
+            </a>
+            <a href="#enquiry" className="btn-ghost text-sm">
+              {lang === 'id' ? 'Isi Formulir' : lang === 'zh' ? '填写表格' : 'Fill Enquiry Form'}
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

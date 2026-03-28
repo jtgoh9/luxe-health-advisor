@@ -33,9 +33,9 @@ const Nav = ({ lang, setLang }: NavProps) => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-4">
         {/* Logo */}
-        <a href="#" className="text-xl font-serif font-semibold tracking-wide text-foreground">
+        <a href="#" className="text-2xl font-serif font-semibold tracking-wide text-foreground">
           VITA<span className="text-primary">BRIDGE</span>
         </a>
 
@@ -46,7 +46,7 @@ const Nav = ({ lang, setLang }: NavProps) => {
               <button
                 key={key}
                 onClick={() => setLang(key)}
-                className={`px-3 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 rounded-sm ${
+                className={`px-3 py-2 text-sm font-medium tracking-wide transition-all duration-200 rounded-sm ${
                   lang === key
                     ? 'bg-primary text-primary-foreground'
                     : 'text-muted-foreground hover:text-foreground'
@@ -56,7 +56,7 @@ const Nav = ({ lang, setLang }: NavProps) => {
               </button>
             ))}
           </div>
-          <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-ghost text-xs">
+          <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-ghost text-sm">
             {t.contact[lang]}
           </a>
         </div>
@@ -82,7 +82,7 @@ const Nav = ({ lang, setLang }: NavProps) => {
                   <button
                     key={key}
                     onClick={() => { setLang(key); setMobileOpen(false); }}
-                    className={`px-3 py-1.5 text-xs font-medium tracking-wide transition-all rounded-sm ${
+                    className={`px-3 py-2 text-sm font-medium tracking-wide transition-all rounded-sm ${
                       lang === key ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'
                     }`}
                   >
@@ -90,7 +90,7 @@ const Nav = ({ lang, setLang }: NavProps) => {
                   </button>
                 ))}
               </div>
-              <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-gold text-xs text-center">
+              <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-gold text-sm text-center">
                 {t.contact[lang]}
               </a>
             </div>
