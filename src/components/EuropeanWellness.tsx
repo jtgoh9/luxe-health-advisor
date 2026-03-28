@@ -41,7 +41,7 @@ const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
             viewport={{ once: true }}
           >
             <div className="section-eyebrow mb-4">{t.ewEyebrow[lang]}</div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground mb-5">{t.ewTitle[lang]}</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.15] mb-5">{t.ewTitle[lang]}</h2>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8">{t.ewSub[lang]}</p>
 
             {/* Therapy Tags */}

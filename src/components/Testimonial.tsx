@@ -60,7 +60,7 @@ const Testimonial = ({ lang }: TestimonialProps) => {
   return (
     <section className="py-24 sm:py-32 bg-secondary">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-        <span className="font-serif text-7xl sm:text-8xl text-primary leading-none">"</span>
+        <span className="font-serif text-5xl sm:text-6xl text-primary leading-none">"</span>
         <div className="min-h-[180px] sm:min-h-[160px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
