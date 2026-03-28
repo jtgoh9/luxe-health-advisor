@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X } from 'lucide-react';
 import { Lang, waLink } from '@/data/translations';
@@ -8,19 +8,15 @@ interface FloatingWhatsAppProps {
 }
 
 const FloatingWhatsApp = ({ lang }: FloatingWhatsAppProps) => {
-  const [showTooltip, setShowTooltip] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowTooltip(true), 3000);
-    const hideTimer = setTimeout(() => setShowTooltip(false), 8000);
-    return () => { clearTimeout(timer); clearTimeout(hideTimer); };
-  }, []);
+  const showTooltip = hovered && !dismissed;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       <AnimatePresence>
-        {showTooltip && !dismissed && (
+        {showTooltip && (
           <motion.div
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -51,6 +47,10 @@ const FloatingWhatsApp = ({ lang }: FloatingWhatsAppProps) => {
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: 'spring', stiffness: 200 }}
         aria-label="WhatsApp"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onFocus={() => setHovered(true)}
+        onBlur={() => setHovered(false)}
       >
         <MessageCircle className="w-6 h-6 text-white" />
       </motion.a>

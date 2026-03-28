@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lang } from '@/data/translations';
 
@@ -45,20 +45,32 @@ const testimonials = [
   },
 ];
 
+const INTERVAL = 8000;
+
 const Testimonial = ({ lang }: TestimonialProps) => {
   const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const next = useCallback(() => {
+    setCurrent(prev => (prev + 1) % testimonials.length);
+  }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent(prev => (prev + 1) % testimonials.length);
-    }, 6000);
+    if (paused) return;
+    const interval = setInterval(next, INTERVAL);
     return () => clearInterval(interval);
-  }, []);
+  }, [paused, next]);
 
   const item = testimonials[current];
 
   return (
-    <section className="py-24 sm:py-32 bg-secondary">
+    <section
+      className="py-24 sm:py-32 bg-secondary"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => setPaused(false)}
+    >
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <span className="font-serif text-5xl sm:text-6xl text-primary leading-none">"</span>
         <div className="min-h-[180px] sm:min-h-[160px] flex items-center justify-center">
@@ -85,8 +97,8 @@ const Testimonial = ({ lang }: TestimonialProps) => {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i === current ? 'bg-primary w-6' : 'bg-border hover:bg-primary/40'
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === current ? 'bg-primary w-6' : 'w-2 bg-border hover:bg-primary/40'
               }`}
               aria-label={`Testimonial ${i + 1}`}
             />

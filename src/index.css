@@ -97,7 +97,7 @@
     gap: 12px;
   }
 
-  .section-eyebrow::before {
+  .section-eyebrow:not(.justify-center)::before {
     content: '';
     display: block;
     width: 28px;
