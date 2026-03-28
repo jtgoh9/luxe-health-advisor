@@ -14,13 +14,21 @@ const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
     { icon: Lock, value: t.ewStat4[lang] },
   ];
 
+  const therapyLabels = {
+    stemCell:   { id: 'Terapi Sel Punca',      en: 'Stem Cell Therapy',     zh: '干细胞疗法' },
+    antiAgeing: { id: 'Anti-Penuaan',           en: 'Anti-Ageing',           zh: '抗衰老' },
+    detox:      { id: 'Program Detoksifikasi',  en: 'Detox Programs',        zh: '排毒方案' },
+    immune:     { id: 'Peningkatan Imunitas',   en: 'Immune Boost',          zh: '免疫增强' },
+    regen:      { id: 'Kedokteran Regeneratif', en: 'Regenerative Medicine', zh: '再生医学' },
+    hormonal:   { id: 'Keseimbangan Hormonal',  en: 'Hormonal Balancing',    zh: '激素平衡' },
+  };
   const therapies = [
-    { icon: Sparkles, label: 'Stem Cell Therapy' },
-    { icon: Heart, label: 'Anti-Ageing' },
-    { icon: Leaf, label: 'Detox Programs' },
-    { icon: ShieldCheck, label: 'Immune Boost' },
-    { icon: Sparkles, label: 'Regenerative Medicine' },
-    { icon: Heart, label: 'Hormonal Balancing' },
+    { icon: Sparkles,    label: therapyLabels.stemCell[lang] },
+    { icon: Heart,       label: therapyLabels.antiAgeing[lang] },
+    { icon: Leaf,        label: therapyLabels.detox[lang] },
+    { icon: ShieldCheck, label: therapyLabels.immune[lang] },
+    { icon: Sparkles,    label: therapyLabels.regen[lang] },
+    { icon: Heart,       label: therapyLabels.hormonal[lang] },
   ];
 
   return (

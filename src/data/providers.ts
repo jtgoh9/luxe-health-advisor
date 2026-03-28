@@ -140,7 +140,7 @@ export const PROVIDERS: Provider[] = [
     indonesian_note: "Bahasa Indonesia & Mandarin concierge staff available",
     packages: [
       {
-        id: "ps-screen-prime", name: "Screen Prime", tier: "Essential", price_sgd: 625, price_display: "SGD 625",
+        id: "ps-screen-prime", name: "Screen Prime", tier: "Essential", price_sgd: 585, price_display: "SGD 585",
         best_for: "Young professionals, first health screen", duration: "Half day",
         highlights: "Health check for young professionals. Designed to screen for common diseases.",
         categories: [
@@ -153,7 +153,7 @@ export const PROVIDERS: Provider[] = [
         add_ons_available: true
       },
       {
-        id: "ps-screen-classic", name: "Screen Classic", tier: "Advanced", price_sgd: 998, price_display: "SGD 998",
+        id: "ps-screen-classic", name: "Screen Classic", tier: "Advanced", price_sgd: 958, price_display: "SGD 958",
         best_for: "Busy professionals wanting cancer and cardiac screening", duration: "Half–full day",
         highlights: "Quality health check with basic cancer screening and optional imaging.",
         categories: [
@@ -180,7 +180,7 @@ export const PROVIDERS: Provider[] = [
         add_ons_available: true
       },
       {
-        id: "ps-screen-senior", name: "Screen Senior Executive", tier: "Premium", price_sgd: 2728, price_display: "SGD 2,728",
+        id: "ps-screen-senior", name: "Screen Senior Executive", tier: "Premium", price_sgd: 2688, price_display: "SGD 2,688",
         best_for: "50+ wanting advanced ultrasound and biomarker depth", duration: "Full day",
         highlights: "Full suite with advanced ultrasound options and ageing biomarker tests.",
         categories: [

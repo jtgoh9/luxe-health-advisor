@@ -12,11 +12,16 @@ const CategoryAccordion = ({ category, defaultOpen = false }: CategoryAccordionP
   const [open, setOpen] = useState(defaultOpen);
   const id = `cat-${category.name.replace(/\s/g, '-')}`;
 
-  // "Everything in X, plus:" — styled note, not accordion
+  // "Everything in X, plus:" — render as a divider, not an accordion row
   if (category.tests.length === 0) {
     return (
-      <div className="mb-3 py-2 px-3 bg-primary/5 border border-primary/10 rounded-sm">
-        <p className="text-sm font-medium text-gold-text italic">{category.name}</p>
+      <div className="flex items-center gap-3 mb-4 mt-1">
+        <div className="h-px flex-1 bg-border opacity-60" />
+        <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-text
+          bg-primary/5 border border-primary/10 px-3 py-1 rounded-sm whitespace-nowrap flex-shrink-0">
+          {category.name}
+        </span>
+        <div className="h-px flex-1 bg-border opacity-60" />
       </div>
     );
   }
