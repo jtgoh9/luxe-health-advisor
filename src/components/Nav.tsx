@@ -24,6 +24,13 @@ const Nav = ({ lang, setLang }: NavProps) => {
     { key: 'zh', label: '中文' },
   ];
 
+  const navLinks = [
+    { href: '#marketplace', label: t.navPackages[lang] },
+    { href: '#journey', label: t.navJourney[lang] },
+    { href: '#european-wellness', label: t.navAbout[lang] },
+    { href: '#enquiry', label: t.navContact[lang] },
+  ];
+
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -39,8 +46,17 @@ const Nav = ({ lang, setLang }: NavProps) => {
           VITA<span className="text-primary">BRIDGE</span>
         </a>
 
-        {/* Desktop: Language + CTA */}
+        {/* Desktop: Nav links + Language + CTA */}
         <div className="hidden md:flex items-center gap-6">
+          {navLinks.map(link => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
           <div className="flex items-center gap-1 bg-secondary rounded-sm p-0.5">
             {langs.map(({ key, label }) => (
               <button
@@ -62,7 +78,7 @@ const Nav = ({ lang, setLang }: NavProps) => {
         </div>
 
         {/* Mobile menu button */}
-        <button className="md:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button className="md:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -76,8 +92,18 @@ const Nav = ({ lang, setLang }: NavProps) => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-background border-b border-border"
           >
-            <div className="px-4 py-4 flex flex-col gap-4">
-              <div className="flex items-center gap-1 bg-secondary rounded-sm p-0.5 self-start">
+            <div className="px-4 py-4 flex flex-col gap-3">
+              {navLinks.map(link => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-base font-medium text-foreground py-2 border-b border-border"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <div className="flex items-center gap-1 bg-secondary rounded-sm p-0.5 self-start mt-2">
                 {langs.map(({ key, label }) => (
                   <button
                     key={key}
@@ -90,7 +116,7 @@ const Nav = ({ lang, setLang }: NavProps) => {
                   </button>
                 ))}
               </div>
-              <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-gold text-sm text-center">
+              <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-gold text-sm text-center mt-2">
                 {t.contact[lang]}
               </a>
             </div>

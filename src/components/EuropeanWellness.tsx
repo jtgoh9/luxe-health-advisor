@@ -24,7 +24,7 @@ const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-secondary">
+    <section id="european-wellness" className="py-24 sm:py-32 bg-secondary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
           <motion.div
@@ -34,12 +34,12 @@ const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
           >
             <div className="section-eyebrow mb-4">{t.ewEyebrow[lang]}</div>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-foreground mb-5">{t.ewTitle[lang]}</h2>
-            <p className="text-base text-muted-foreground leading-relaxed mb-8">{t.ewSub[lang]}</p>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8">{t.ewSub[lang]}</p>
 
             {/* Therapy Tags */}
             <div className="flex flex-wrap gap-3 mb-8">
               {therapies.map(({ icon: Icon, label }) => (
-                <span key={label} className="inline-flex items-center gap-1.5 text-xs font-medium text-primary border border-primary/20 bg-primary/5 px-3 py-2 rounded-sm">
+                <span key={label} className="inline-flex items-center gap-1.5 text-xs font-medium text-gold-text border border-primary/20 bg-primary/5 px-3 py-2 rounded-sm">
                   <Icon className="w-3.5 h-3.5" />
                   {label}
                 </span>
@@ -69,7 +69,7 @@ const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
                   <div className="w-10 h-10 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">
                     <Icon className="w-4 h-4 text-primary" />
                   </div>
-                  <p className="font-serif text-lg text-foreground leading-snug pt-2">{value}</p>
+                  <p className="font-serif text-lg sm:text-xl text-foreground leading-snug pt-2">{value}</p>
                 </div>
               ))}
             </div>

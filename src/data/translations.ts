@@ -3,6 +3,10 @@ export type Lang = 'id' | 'en' | 'zh';
 export const t: Record<string, Record<Lang, string>> = {
   // Nav
   contact: { id: "Hubungi Kami", en: "Contact Us", zh: "联系我们" },
+  navPackages: { id: "Paket", en: "Packages", zh: "方案" },
+  navJourney: { id: "Perjalanan", en: "Journey", zh: "旅程" },
+  navAbout: { id: "Tentang", en: "About", zh: "关于" },
+  navContact: { id: "Kontak", en: "Contact", zh: "联系" },
 
   // Hero
   heroEyebrow: { id: "Singapura · Johor Bahru · Thailand · Vietnam · Indonesia", en: "Singapore · Johor Bahru · Thailand · Vietnam · Indonesia", zh: "新加坡 · 柔佛巴鲁 · 泰国 · 越南 · 印度尼西亚" },
