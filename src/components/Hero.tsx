@@ -28,7 +28,7 @@ const Hero = ({ lang }: HeroProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="section-eyebrow justify-center mb-8 text-xs"
+          className="section-eyebrow justify-center mb-8"
         >
           {t.heroEyebrow[lang]}
         </motion.div>
@@ -37,7 +37,7 @@ const Hero = ({ lang }: HeroProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl font-light text-foreground leading-tight whitespace-pre-line mb-8"
+          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-foreground leading-[1.1] whitespace-pre-line mb-8"
         >
           {t.heroTitle[lang]}
         </motion.h1>
@@ -46,7 +46,7 @@ const Hero = ({ lang }: HeroProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto mb-12 leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mb-12 leading-relaxed"
         >
           {t.heroSub[lang]}
         </motion.p>
@@ -57,10 +57,10 @@ const Hero = ({ lang }: HeroProps) => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-gold text-sm">
+          <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-gold text-base px-10 py-4">
             {t.heroCta1[lang]}
           </a>
-          <a href="#marketplace" className="btn-ghost text-sm">
+          <a href="#marketplace" className="btn-ghost text-base px-10 py-4">
             {t.heroCta2[lang]}
           </a>
         </motion.div>

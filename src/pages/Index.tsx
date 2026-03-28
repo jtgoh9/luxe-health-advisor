@@ -4,14 +4,15 @@ import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
 import TrustBar from '@/components/TrustBar';
 import ScreeningMarketplace from '@/components/ScreeningMarketplace';
-import Journey from '@/components/Journey';
-import AddOns from '@/components/AddOns';
+import YourExperience from '@/components/YourExperience';
 import EuropeanWellness from '@/components/EuropeanWellness';
 import Events from '@/components/Events';
 import Testimonial from '@/components/Testimonial';
 import EnquiryForm from '@/components/EnquiryForm';
 import FooterCta from '@/components/FooterCta';
 import Footer from '@/components/Footer';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import BackToTop from '@/components/BackToTop';
 
 const Index = () => {
   const [lang, setLang] = useState<Lang>('en');
@@ -22,14 +23,15 @@ const Index = () => {
       <Hero lang={lang} />
       <TrustBar lang={lang} />
       <ScreeningMarketplace lang={lang} />
-      <Journey lang={lang} />
-      <AddOns lang={lang} />
+      <YourExperience lang={lang} />
       <EuropeanWellness lang={lang} />
       <Events lang={lang} />
       <Testimonial lang={lang} />
       <EnquiryForm lang={lang} />
       <FooterCta lang={lang} />
       <Footer lang={lang} />
+      <FloatingWhatsApp lang={lang} />
+      <BackToTop />
     </div>
   );
 };
