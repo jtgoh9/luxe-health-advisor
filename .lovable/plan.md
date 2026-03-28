@@ -1,58 +1,114 @@
 
 
-# Audit Review: What's Already Fixed vs. What Remains
+# Audit of 9 Proposed Fixes — Senior Apple UX Engineer Review
 
-The external audit was written against an **older snapshot** of the code (pre-fixes). Many items have already been resolved. Here's the status of each finding and whether implementation is warranted.
+## Summary Verdict
 
----
-
-## Already Fixed — Do NOT Implement (7 of 10)
-
-| # | Audit Finding | Status | Evidence |
-|---|--------------|--------|----------|
-| 1 | gold-text contrast on dark theme | **N/A** | We rejected the dark theme. No dark theme exists. Current `--gold-text: 39 60% 26%` achieves ~4.8:1 on white — acceptable. We already warmed it to `39 60% 26%` in the last round. |
-| 2 | H2 line-height missing | **Fixed** | All H2s now have `leading-[1.15]` — confirmed across all section components in previous rounds. |
-| 3 | Price vs name hierarchy | **Fixed** | Package name is now `text-2xl sm:text-3xl font-light`, price is `text-xl sm:text-2xl font-medium` — name dominant, price subordinate. Already corrected. |
-| 4 | H3 font-weight 400 default | **Fixed** | `index.css` line 80-82: `h3, h4, h5, h6 { font-weight: 300; }` — already added. |
-| 5 | Eyebrow tracking px → em | **Fixed** | `index.css` line 93: `.section-eyebrow` uses `tracking-[0.25em]` — already corrected. |
-| 6 | Eyebrow font size 11→12px | **Fixed** | `index.css` line 93: `text-[12px]` — already corrected. |
-| 8 | Nav logo weight too heavy | **Fixed** | `Nav.tsx` line 51: `font-light tracking-[0.15em]` and `text-xl` — already corrected. |
+5 of 9 prompts should be implemented. 1 must be rejected outright. 3 need modification.
 
 ---
 
-## Already Fixed But Audit Doesn't Know (2 more)
+## Prompt-by-Prompt Assessment
 
-| # | Finding | Status |
-|---|---------|--------|
-| 9 | DM Sans missing weight 600 | **Fixed** | `index.css` line 1: Google Fonts import includes `wght@300;400;500;600`. |
-| 7 | Hero H1 too large on mobile | **Fixed** | `Hero.tsx` line 34: `text-4xl sm:text-5xl md:text-7xl lg:text-8xl` — mobile is 36px, exactly what the audit recommends. |
+### Prompt 1: Dark Luxury Theme — REJECT
 
----
+**Do not implement.** We explicitly rejected the dark theme in two previous audits. The rationale hasn't changed:
+- The current white + warm gold system is aligned with 2026 "quiet luxury" (Aman, Peninsula Hotels, Bottega Veneta digital)
+- Dark navy reads as "fintech" or "crypto dashboard," not "health concierge for HNW families"
+- Switching the entire color system now would invalidate 5 rounds of carefully tuned contrast ratios, button styles, and section transitions
+- The claim "gold on white reads as a spa blog" is subjective and wrong — Raffles, Four Seasons, and Hermès all use gold on white
 
-## Remaining Item Worth Implementing (1 of 10)
-
-### Fix 10: Border radius inconsistency
-
-The audit identifies 6 different `rounded-*` values across the site. Our design system uses `rounded-sm` (2px) for all non-circular elements. But shadcn/ui components (accordion, dialog, select, etc.) use `rounded-md`, `rounded-lg`, `rounded-xl` by default.
-
-**Should we implement?** Partially. The shadcn components are internal UI chrome (dropdowns, dialogs) that users rarely notice. The visible inconsistency is in custom components where `rounded-md` or `rounded-lg` snuck in. A targeted cleanup is worth doing.
-
-**What to do:**
-- Search for `rounded-md`, `rounded-lg`, `rounded-xl` in custom components (not `src/components/ui/`)
-- Replace with `rounded-sm` where found
-- Leave shadcn/ui defaults untouched — modifying those creates maintenance burden
+**Verdict: REJECT. Do not implement.**
 
 ---
 
-## Verdict
+### Prompt 2: Replace Testimonials with Founder Promise — IMPLEMENT (modified)
 
-**9 of 10 findings are already resolved.** The audit was run against stale code. The only actionable item is the border-radius cleanup, which is low-priority polish.
+**Should implement. The reasoning is correct.** Four fabricated testimonials from "The S. Family, Jakarta" are a trust liability for HNW clients who will see through placeholder content. A founder's personal statement is more honest and builds authentic credibility.
 
-### Implementation plan:
+**Modification needed:** The proposed component removes the carousel but the replacement is just a static quote. Keep it simple as proposed — a single centered founder statement with gold rule accents. Remove the existing carousel dots and rotation logic entirely.
 
-| File | Change |
-|------|--------|
-| Custom components (non-ui/) | Replace `rounded-md`, `rounded-lg`, `rounded-xl` with `rounded-sm` on non-circular elements |
+**Verdict: IMPLEMENT as proposed.**
 
-**Scope: ~15 min. Low risk. No logic changes.**
+---
+
+### Prompt 3: Footer — Remove AI Claims + Hide Placeholder Number — IMPLEMENT
+
+**Should implement. Both fixes are correct:**
+1. "AI-assisted matching · Real-time availability · Encrypted communications" is factually false — VitaBridge has no AI, no live booking API, no E2E encryption. This was added in a previous round as a "tech signal" but it's dishonest. Remove it.
+2. Displaying "+65 1234 5678" as a formatted number looks real but is a placeholder. Replacing with "Chat via WhatsApp" as a link is the right call until a real number is set.
+
+**Verdict: IMPLEMENT as proposed.**
+
+---
+
+### Prompt 4: Fix Step 4 Copy — "Medical Team" → "Concierge Team" — IMPLEMENT
+
+**Should implement. This is a legal liability fix.** The footer disclaimer says "Not a licensed medical provider" while Step 4 says "Our medical team monitors your screening results." These directly contradict each other. The proposed copy ("concierge team shares your screening report, helps coordinate") is accurate and avoids clinical language.
+
+**Verdict: IMPLEMENT as proposed.**
+
+---
+
+### Prompt 5: Hero CTA Order + Subtext — IMPLEMENT (modified)
+
+**Should implement, with one modification:**
+
+1. **CTA swap — Yes.** "Begin Journey" as the primary gold CTA pointing to `#journey` is correct. First-time visitors need to understand VitaBridge before browsing packages. Currently the gold button says "Browse Packages" which skips the value proposition.
+
+2. **Subtext change — Partially.** The proposed copy is better than the current generic text because it names two concrete differentiators (Indonesian-speaking team + European Wellness access). However, the current ghost CTA links to WhatsApp (`waLink(lang)`), which is correct for "Begin Journey" — change the gold CTA to `#journey` and ghost to `#marketplace` as proposed.
+
+**Verdict: IMPLEMENT as proposed.**
+
+---
+
+### Prompt 6: European Wellness — Stop Sending Clients Off-Site — IMPLEMENT
+
+**Should implement. This is a revenue-critical fix.** The current "Visit Website" button links to `european-wellness.eu` where clients can book directly, bypassing VitaBridge entirely. Replacing it with a WhatsApp enquiry captures the lead. The proposed EW-specific pre-filled WhatsApp message is well-crafted.
+
+**Verdict: IMPLEMENT as proposed.**
+
+---
+
+### Prompt 7: Marketplace Value Proposition Banner — IMPLEMENT
+
+**Should implement.** The reasoning is sound — clients comparing SGD 12,388 packages can book directly with the provider. VitaBridge never explains its value at the point of decision. A thin banner with 4 bullet points (concierge, logistics, same price, 90-day follow-up) inserted between the header and provider tabs is non-intrusive and addresses the "why book through us" question.
+
+**Verdict: IMPLEMENT as proposed.**
+
+---
+
+### Prompt 8: Events — Replace with Community Waitlist — MODIFY
+
+**Should modify, not fully replace.** The current Events section already has event-specific WhatsApp messages and capacity labels added in previous rounds. The problem the prompt identifies is real — no confirmed events exist yet. But the proposed replacement loses the specific event types (dinner, seminar, open day) and replaces them with generic category cards that say essentially the same thing but less specifically.
+
+**Better approach:** Keep the current 3-card structure but remove the fake dates ("Q3 2026 · Singapore"). Replace dates with "Coming Soon" in all languages. Keep the event-specific WhatsApp messages (already implemented). This is a smaller, more honest change.
+
+**Verdict: IMPLEMENT with modification — remove dates, keep card structure.**
+
+---
+
+### Prompt 9: Marketplace Disclaimer Repositioning — IMPLEMENT (modified)
+
+**Should implement.** Moving the disclaimer to be more visible is correct. However, the proposed layout puts "Prices as of Q1 2026" as a separate element — this is a maintenance burden (needs updating quarterly). Better to integrate the date into the existing disclaimer text.
+
+**Verdict: IMPLEMENT as proposed — the Q1 2026 date stamp adds useful context.**
+
+---
+
+## Implementation Plan
+
+| # | Prompt | Verdict | Files |
+|---|--------|---------|-------|
+| 1 | Dark theme | **REJECT** | — |
+| 2 | Founder promise | **IMPLEMENT** | `Testimonial.tsx`, `translations.ts` |
+| 3 | Footer cleanup | **IMPLEMENT** | `Footer.tsx` |
+| 4 | Step 4 copy fix | **IMPLEMENT** | `translations.ts` |
+| 5 | Hero CTA + subtext | **IMPLEMENT** | `Hero.tsx`, `translations.ts` |
+| 6 | EW WhatsApp CTA | **IMPLEMENT** | `EuropeanWellness.tsx` |
+| 7 | Marketplace value banner | **IMPLEMENT** | `ScreeningMarketplace.tsx` |
+| 8 | Events date removal | **IMPLEMENT (modified)** | `Events.tsx` |
+| 9 | Disclaimer reposition | **IMPLEMENT** | `ScreeningMarketplace.tsx` |
+
+**Total: 8 fixes across 7 files. No architectural changes. Mostly copy and className edits.**
 
