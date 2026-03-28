@@ -1,16 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { type Lang } from '@/data/translations';
+import Nav from '@/components/Nav';
+import Hero from '@/components/Hero';
+import TrustBar from '@/components/TrustBar';
+import ScreeningMarketplace from '@/components/ScreeningMarketplace';
+import Journey from '@/components/Journey';
+import AddOns from '@/components/AddOns';
+import EuropeanWellness from '@/components/EuropeanWellness';
+import Events from '@/components/Events';
+import Testimonial from '@/components/Testimonial';
+import FooterCta from '@/components/FooterCta';
+import Footer from '@/components/Footer';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [lang, setLang] = useState<Lang>('en');
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      <Nav lang={lang} setLang={setLang} />
+      <Hero lang={lang} />
+      <TrustBar lang={lang} />
+      <ScreeningMarketplace lang={lang} />
+      <Journey lang={lang} />
+      <AddOns lang={lang} />
+      <EuropeanWellness lang={lang} />
+      <Events lang={lang} />
+      <Testimonial lang={lang} />
+      <FooterCta lang={lang} />
+      <Footer lang={lang} />
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
