@@ -51,11 +51,11 @@ const Hero = ({ lang }: HeroProps) => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href="#marketplace" className="btn-gold text-base px-10 py-4">
-            {t.heroCta2[lang]}
-          </a>
-          <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" className="btn-ghost text-base px-10 py-4">
+          <a href="#journey" className="btn-gold text-base px-10 py-4">
             {t.heroCta1[lang]}
+          </a>
+          <a href="#marketplace" className="btn-ghost text-base px-10 py-4">
+            {t.heroCta2[lang]}
           </a>
         </motion.div>
       </div>

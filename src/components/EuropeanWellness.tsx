@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Globe, Clock, Award, Lock, Leaf, Heart, ShieldCheck, Sparkles } from 'lucide-react';
-import { Lang, t } from '@/data/translations';
+import { Globe, Clock, Award, Lock, Leaf, Heart, ShieldCheck, Sparkles, MessageCircle } from 'lucide-react';
+import { Lang, t, WHATSAPP } from '@/data/translations';
 
 interface EuropeanWellnessProps {
   lang: Lang;
@@ -60,13 +60,19 @@ const EuropeanWellness = ({ lang }: EuropeanWellnessProps) => {
             </div>
 
             <a
-              href="https://european-wellness.eu/"
+              href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+                lang === 'id'
+                  ? 'Halo VitaBridge, saya tertarik dengan program European Wellness di Puteri Harbour. Boleh saya tahu lebih lanjut?'
+                  : lang === 'zh'
+                  ? '您好VitaBridge，我对Puteri Harbour的European Wellness项目感兴趣，能了解更多信息吗？'
+                  : 'Hello VitaBridge, I am interested in the European Wellness programmes at Puteri Harbour. Could I learn more?'
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-ghost text-sm inline-flex items-center gap-2"
             >
-              <Globe className="w-4 h-4" />
-              {lang === 'id' ? 'Kunjungi Website' : lang === 'zh' ? '访问官网' : 'Visit Website'}
+              <MessageCircle className="w-4 h-4" />
+              {lang === 'id' ? 'Tanya Program EW' : lang === 'zh' ? '咨询EW项目' : 'Enquire About EW Programmes'}
             </a>
           </motion.div>
 

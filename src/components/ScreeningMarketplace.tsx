@@ -82,6 +82,26 @@ const ScreeningMarketplace = ({ lang }: MarketplaceProps) => {
           <p className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto">{t.marketplaceSub[lang]}</p>
         </motion.div>
 
+        {/* Value proposition banner */}
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-10 py-4 border-y border-border text-xs text-muted-foreground">
+          <span className="flex items-center gap-1.5">
+            <span className="w-1 h-1 rounded-full bg-primary inline-block"></span>
+            {lang === 'id' ? 'Concierge bahasa Indonesia hadir langsung' : lang === 'zh' ? '全程印尼语陪同' : 'Bahasa Indonesia concierge on the ground'}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-1 h-1 rounded-full bg-primary inline-block"></span>
+            {lang === 'id' ? 'Semua logistik kami urus' : lang === 'zh' ? '全程物流安排' : 'All logistics handled for you'}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-1 h-1 rounded-full bg-primary inline-block"></span>
+            {lang === 'id' ? 'Harga sama dengan provider langsung' : lang === 'zh' ? '与直接预约同价' : 'Same price as booking direct'}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-1 h-1 rounded-full bg-primary inline-block"></span>
+            {lang === 'id' ? 'Tindak lanjut 90 hari termasuk' : lang === 'zh' ? '含90天后续跟进' : '90-day follow-up included'}
+          </span>
+        </div>
+
         {/* Provider Selector */}
         <div className="relative">
           <div className="flex overflow-x-auto gap-3 mb-10 pb-2 scrollbar-hide snap-x snap-mandatory">
@@ -270,14 +290,14 @@ const ScreeningMarketplace = ({ lang }: MarketplaceProps) => {
         )}
 
         {/* Disclaimer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-12 py-5 border-t border-border text-center"
-        >
-          <p className="text-xs text-muted-foreground">{t.disclaimer[lang]}</p>
-        </motion.div>
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-3 py-4 border-t border-border">
+          <p className="text-xs text-muted-foreground">
+            {t.disclaimer[lang]}
+          </p>
+          <p className="text-xs text-muted-foreground flex-shrink-0">
+            {lang === 'id' ? 'Data per Q1 2026' : lang === 'zh' ? '数据截至2026年Q1' : 'Prices as of Q1 2026'}
+          </p>
+        </div>
       </div>
     </section>
   );

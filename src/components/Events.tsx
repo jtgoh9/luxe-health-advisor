@@ -11,7 +11,7 @@ const Events = ({ lang }: EventsProps) => {
     {
       title: t.event1[lang],
       desc: t.event1Desc[lang],
-      date: lang === 'id' ? 'Q3 2026 · Singapura' : lang === 'zh' ? 'Q3 2026 · 新加坡' : 'Q3 2026 · Singapore',
+      date: lang === 'id' ? 'Segera Hadir' : lang === 'zh' ? '即将推出' : 'Coming Soon',
       capacity: lang === 'id' ? 'Terbatas 20 tamu' : lang === 'zh' ? '限20位嘉宾' : 'Limited to 20 guests',
       waMsg: lang === 'id'
         ? 'Halo VitaBridge, saya tertarik menghadiri Health & Longevity Dinner. Boleh saya daftar minat?'
@@ -22,7 +22,7 @@ const Events = ({ lang }: EventsProps) => {
     {
       title: t.event2[lang],
       desc: t.event2Desc[lang],
-      date: lang === 'id' ? 'Q3 2026 · Singapura' : lang === 'zh' ? 'Q3 2026 · 新加坡' : 'Q3 2026 · Singapore',
+      date: lang === 'id' ? 'Segera Hadir' : lang === 'zh' ? '即将推出' : 'Coming Soon',
       capacity: null,
       waMsg: lang === 'id'
         ? 'Halo VitaBridge, saya tertarik menghadiri Seminar Kesehatan VitaBridge. Boleh saya daftar minat?'
@@ -33,7 +33,7 @@ const Events = ({ lang }: EventsProps) => {
     {
       title: t.event3[lang],
       desc: t.event3Desc[lang],
-      date: lang === 'id' ? 'Q4 2026 · Puteri Harbour, JB' : lang === 'zh' ? 'Q4 2026 · Puteri Harbour, JB' : 'Q4 2026 · Puteri Harbour, JB',
+      date: lang === 'id' ? 'Segera Hadir' : lang === 'zh' ? '即将推出' : 'Coming Soon',
       capacity: lang === 'id' ? 'Undangan Eksklusif' : lang === 'zh' ? '仅限受邀嘉宾' : 'By Invitation',
       waMsg: lang === 'id'
         ? 'Halo VitaBridge, saya tertarik menghadiri Open Day European Wellness Puteri Harbour. Boleh saya daftar minat?'
