@@ -9,7 +9,7 @@ export const t: Record<string, Record<Lang, string>> = {
   navContact: { id: "Kontak", en: "Contact", zh: "联系" },
 
   // Hero
-  heroEyebrow: { id: "Singapura · Johor Bahru · Thailand · Vietnam · Indonesia", en: "Singapore · Johor Bahru · Thailand · Vietnam · Indonesia", zh: "新加坡 · 柔佛巴鲁 · 泰国 · 越南 · 印度尼西亚" },
+  heroEyebrow: { id: "Singapura · Johor Bahru · Indonesia", en: "Singapore · Johor Bahru · Indonesia", zh: "新加坡 · 柔佛巴鲁 · 印度尼西亚" },
   heroTitle: {
     id: "Kesehatan Anda.\nKetenangan Keluarga Anda.",
     en: "Your Health.\nYour Family's Peace of Mind.",
@@ -62,8 +62,8 @@ export const t: Record<string, Record<Lang, string>> = {
   step1Desc: { id: "Hubungi kami via WhatsApp atau formulir pertanyaan untuk konsultasi awal dan rekomendasi paket.", en: "Reach out via WhatsApp or our enquiry form for initial consultation and package recommendations.", zh: "通过WhatsApp或咨询表单联系我们进行初步咨询和方案推荐。" },
   step2: { id: "Skrining di Singapura", en: "Singapore Screening", zh: "新加坡筛查" },
   step2Desc: { id: "Kami mengatur jadwal, akomodasi, dan transportasi Anda.", en: "We arrange your schedule, accommodation, and transport.", zh: "我们安排您的行程、住宿和交通。" },
-  step3: { id: "JB / Thailand Regeneratif (Opsional)", en: "JB / Thailand Regenerative (Optional)", zh: "JB/泰国再生医学（可选）" },
-  step3Desc: { id: "Akses eksklusif ke European Wellness Puteri Harbour atau Bangkok untuk terapi regeneratif sel punca.", en: "Exclusive access to European Wellness at Puteri Harbour or Bangkok for stem cell and regenerative therapy.", zh: "独家访问 European Wellness（Puteri Harbour 或曼谷）进行干细胞和再生治疗。" },
+  step3: { id: "Program Regeneratif JB (Opsional)", en: "JB Regenerative Programme (Optional)", zh: "JB再生医学项目（可选）" },
+  step3Desc: { id: "Akses eksklusif ke European Wellness Center di Puteri Harbour untuk terapi sel dan program regeneratif.", en: "Exclusive access to European Wellness Center at Puteri Harbour for cell therapy and regenerative programmes.", zh: "独家访问 Puteri Harbour 的 European Wellness Center，提供细胞治疗和再生医学项目。" },
   step4: { id: "Tindak Lanjut 90 Hari", en: "90-Day Follow-Up", zh: "90天跟进" },
   step4Desc: { id: "Tim medis kami memantau hasil skrining Anda, mengoordinasikan rujukan spesialis, memastikan tindakan pencegahan diterapkan, dan menjadi mitra kesehatan Anda selama 3 bulan.", en: "Our medical team monitors your screening results, coordinates specialist referrals, ensures preventive actions are taken, and serves as your health partner for 3 months.", zh: "我们的医疗团队在3个月内监控您的筛查结果，协调专家转介，确保落实预防措施，成为您的健康伙伴。" },
 

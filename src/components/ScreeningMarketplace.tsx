@@ -44,15 +44,15 @@ const ScreeningMarketplace = ({ lang }: MarketplaceProps) => {
     return compareIds.map(id => allPkgs.find(p => p.id === id)!).filter(Boolean);
   }, [compareIds]);
 
-  const allTests = useMemo(() => {
+  const allCategories = useMemo(() => {
     if (comparePackages.length === 0) return [];
-    const testSet = new Set<string>();
+    const catSet = new Set<string>();
     comparePackages.forEach(pkg => {
       pkg.categories.forEach(cat => {
-        cat.tests.forEach(test => testSet.add(test));
+        if (cat.tests.length > 0) catSet.add(cat.name);
       });
     });
-    return Array.from(testSet);
+    return Array.from(catSet);
   }, [comparePackages]);
 
   const badgeLabel = (badge: string | null) => {
@@ -203,14 +203,20 @@ const ScreeningMarketplace = ({ lang }: MarketplaceProps) => {
                       <td className="p-4 text-sm font-medium text-muted-foreground sticky left-0 bg-secondary/50">Duration</td>
                       {comparePackages.map(pkg => <td key={pkg.id} className="p-4 text-sm text-foreground">{pkg.duration}</td>)}
                     </tr>
-                    {allTests.map((test, ti) => (
-                      <tr key={ti} className={`border-t border-border ${ti % 2 ? 'bg-secondary/30' : ''}`}>
-                        <td className={`p-4 text-sm text-muted-foreground sticky left-0 ${ti % 2 ? 'bg-secondary/30' : 'bg-card'}`}>{test}</td>
+                    {allCategories.map((catName, ci) => (
+                      <tr key={ci} className={`border-t border-border ${ci % 2 ? 'bg-secondary/30' : ''}`}>
+                        <td className={`p-4 text-sm text-muted-foreground sticky left-0 ${ci % 2 ? 'bg-secondary/30' : 'bg-card'}`}>
+                          {catName}
+                        </td>
                         {comparePackages.map(pkg => {
-                          const has = pkg.categories.some(c => c.tests.includes(test));
+                          const has = pkg.categories.some(
+                            c => c.name === catName && c.tests.length > 0
+                          );
                           return (
-                            <td key={pkg.id} className="p-4">
-                              {has ? <Check className="w-4 h-4 text-green" /> : <span className="text-muted-foreground/30">—</span>}
+                            <td key={pkg.id} className="p-4 text-center">
+                              {has
+                                ? <Check className="w-4 h-4 text-green mx-auto" />
+                                : <span className="text-muted-foreground/30 text-lg leading-none">—</span>}
                             </td>
                           );
                         })}
